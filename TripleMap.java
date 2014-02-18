@@ -1,16 +1,16 @@
 package net.anselstetter.map;
 
 import java.util.Collection;
-import java.util.HashMap;
+import java.util.WeakHashMap;
 import java.util.Map;
 import java.util.Set;
 
 public final class TripleMap<A, B, C> {
-	private Map<A, Map<B, C>> map = new HashMap<A, Map<B, C>>();
+	private Map<A, Map<B, C>> map = new WeakHashMap<A, Map<B, C>>();
 
 	public C put(A a, B b, C c) {
 		if (!map.containsKey(a)) {
-			map.put(a, new HashMap<B, C>());
+			map.put(a, new WeakHashMap<B, C>());
 		}
 		map.get(a).put(b, c);
 		return c;
